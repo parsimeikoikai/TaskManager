@@ -15,7 +15,7 @@ const BtnEditTask: React.FC<{ task: Task }> = ({ task }) => {
          dark:hover:text-slate-200 hover:text-slate-700"
         onClick={handleDeleteTask}
       >
-        <RiDeleteBin6Fill />
+        <RiDeleteBin6Fill className="ml-2 w-4 sm:w-5 text-red-400" />
       </button>
     </>
   );

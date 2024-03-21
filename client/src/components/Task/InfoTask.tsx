@@ -22,7 +22,7 @@ const InfoTask: React.FC<{ task: Task }> = ({ task }) => {
       </div>
       <div
         title={task.description}
-        className={`mb-2`}
+        className={`mb-2 ml-1`}
       >
         <LinesEllipsis
           text={task.description}
@@ -33,16 +33,14 @@ const InfoTask: React.FC<{ task: Task }> = ({ task }) => {
         />
       </div>
       <hr />
-      <div className="flex items-center">
-
-        <time className="flex  ml-1 items-center">
-          <Calendar className="mr-2 w-4 sm:w-5" /> {formatDate(task.deadline)}
-        </time>
-        <div className="ml-14">
-          <Actions task={task} />
-        </div>
-
+      <div className="flex-grow mt-2 mb-2"> 
+      <div className="flex items-center"> 
+      <Calendar className="ml-2 w-4 sm:w-5 text-violet-500" /> &nbsp;
+        <span className="text-sm">{formatDate(task.deadline)}</span>
+        <Actions task={task} />
       </div>
+     
+    </div>
       <hr />
       <div className="flex items-center ml-3 mt-2">
         {task.status === TaskStatus.TODO && (
