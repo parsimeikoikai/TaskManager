@@ -7,7 +7,8 @@ const prisma = new PrismaClient();
 const createTask = async (req: Request, res: Response) => {
   try {
     const { title, description, deadline, status } = req.body;
-
+    
+    console.log("deadline",deadline)
 
     if (!title) {
       return res.status(400).json({ error: 'Title is required' });

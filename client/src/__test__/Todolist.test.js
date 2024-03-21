@@ -1,4 +1,3 @@
-import React from 'react';
 import { render } from '@testing-library/react';
 import Todolist from '../components/TodoList';
 import { useQuery } from 'react-query';
