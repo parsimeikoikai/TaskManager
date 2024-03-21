@@ -16,10 +16,9 @@ async function main() {
 
   app.use(cors());
   
-  // Register API routes
   app.use("/api/v1", TodolistRouter);
 
-  // Catch unregistered routes
+  
   app.all("*", (req: Request, res: Response) => {
     res.status(404).json({ error: `Route ${req.originalUrl} not found` });
   });

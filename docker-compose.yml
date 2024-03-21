@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  client:
+    build: ./client
+    container_name: react_client
+    restart: always
+    ports:
+      - "3000:3000"
+
+  server:
+    build: ./server
+    container_name: node_server
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgres://robertkoikai:dbuser2024@db:5432/todolistdb
+
+  db:
+    image: postgres:latest
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: robertkoikai
+      POSTGRES_PASSWORD: dbuser2024
+      POSTGRES_DB: todolistdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
