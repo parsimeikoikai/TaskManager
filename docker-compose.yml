@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+
+  client:
+    build: ./client
+    container_name: react_client
+    restart: always
+    ports:
+      - "3000:3000"
+
+  postgresdb:
+    image: postgres
+    hostname: localhost
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      - POSTGRES_USER=$POSTGRESDB_USER
+      - POSTGRES_PASSWORD=$POSTGRESDB_ROOT_PASSWORD
+      - POSTGRES_DB=$POSTGRESDB_DATABASE
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  server:
+    build: ./server
+    container_name: node_server
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgresdb
+    environment:
+      - DATABASE_URL="postgresql://postgres:postgres@localhost:5432/mydb?schema=public"
+
+volumes:
+  postgres_data:
