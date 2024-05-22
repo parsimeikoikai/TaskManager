@@ -1,6 +1,4 @@
-# Spring ACT Full Stack Programming Assignment
-
-This repository contains a solution to the Full Stack Programming Assignment.
+# Task manager
 
 ## Run Project Locally Without Docker
 
